@@ -1,0 +1,26 @@
+server:
+  port: 8080
+
+spring:
+  mvc:
+    dispatch-options-request: true
+
+  datasource:
+    url: jdbc:postgresql://localhost:15432/malldemo
+    username: postgres
+    password: 123
+    driverClassName: org.postgresql.Driver
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    open-in-view: false
+    hibernate:
+      ddl-auto: validate
+  redis:
+    host: localhost
+    port: 56379
+    database: 0
+    timeout: 1m
