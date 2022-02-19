@@ -1,0 +1,16 @@
+version: '3'
+services:
+  postgres:
+    build: devops/postgres-cluster
+    container_name: ko-postgres-demo
+    ports:
+      - 15432:5432
+    environment:
+      PG_ROLE: postgres
+      POSTGRES_PASSWORD: 123
+      PG_DATABASE: koygutc
+  redis:
+    image: redis:5
+    container_name: ko-redis-demo
+    ports:
+      - "56379:6379"
