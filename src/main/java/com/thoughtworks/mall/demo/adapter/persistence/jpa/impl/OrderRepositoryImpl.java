@@ -22,11 +22,11 @@ public class OrderRepositoryImpl extends DefaultBaseRepository<Order, OrderPo, L
     }
 
     @Override
-    public List<Order> findByOrderId(Long orderId) {
+    public List<Order> findByTransaction(Long orderId) {
 
         OrderPo orderPo = new OrderPo();
-        orderPo.setOrderId(orderId);
-        return jpaRepository.findAll(Example.of(orderPo, matching().withMatcher("order_id", exact())))
+        orderPo.setTransaction(orderId);
+        return jpaRepository.findAll(Example.of(orderPo, matching().withMatcher("transaction", exact())))
                 .stream().map(this::convertEntityToDomain).collect(Collectors.toList());
     }
 }

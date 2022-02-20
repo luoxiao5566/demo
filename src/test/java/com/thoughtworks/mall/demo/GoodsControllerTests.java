@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-class DemoApplicationTests {
+class GoodsControllerTests {
     @Autowired
     MockMvc mockMvc;
 
@@ -54,12 +54,12 @@ class DemoApplicationTests {
         mockMvc.perform(post("/open-api/goods").content(jsonString).contentType(MediaType.APPLICATION_JSON));
         List<Goods> goodsList = goodsDomainService.findAll();
         assertNotNull(goodsList);
-        assertEquals(1,goodsList.size());
-        assertEquals("个",goodsList.get(0).getSku());
-        assertEquals("苹果",goodsList.get(0).getName());
-        assertEquals("https://www.cxx.com",goodsList.get(0).getImage());
-        assertEquals(3000,goodsList.get(0).getAmount());
-        assertEquals("好吃的苹果",goodsList.get(0).getComment());
+        assertEquals(1, goodsList.size());
+        assertEquals("个", goodsList.get(0).getSku());
+        assertEquals("苹果", goodsList.get(0).getName());
+        assertEquals("https://www.cxx.com", goodsList.get(0).getImage());
+        assertEquals(3000, goodsList.get(0).getAmount());
+        assertEquals("好吃的苹果", goodsList.get(0).getComment());
     }
 
     @Test
@@ -73,12 +73,12 @@ class DemoApplicationTests {
         String jsonString = objectMapper.writeValueAsString(goodsCommand);
         mockMvc.perform(post("/open-api/goods").content(jsonString).contentType(MediaType.APPLICATION_JSON));
         mockMvc.perform(get("/open-api/goods"))
-                .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].sku", is("个")))
-                .andExpect(jsonPath("$[0].name", is("苹果")))
-                .andExpect(jsonPath("$[0].image", is("https://www.cxx.com")))
-                .andExpect(jsonPath("$[0].amount", is(3000)))
-                .andExpect(jsonPath("$[0].comment", is("好吃的苹果")));
+                .andExpect(jsonPath("$.goodsList", hasSize(1)))
+                .andExpect(jsonPath("$.goodsList[0].sku", is("个")))
+                .andExpect(jsonPath("$.goodsList[0].name", is("苹果")))
+                .andExpect(jsonPath("$.goodsList[0].image", is("https://www.cxx.com")))
+                .andExpect(jsonPath("$.goodsList[0].amount", is(3000)))
+                .andExpect(jsonPath("$.goodsList[0].comment", is("好吃的苹果")));
 
     }
 

@@ -13,15 +13,17 @@ public class Order {
 
     private Long id;
 
-    private Long orderId;
+    private Long transaction;
 
-    private String goodsSku;
+    private Long goods;
+
+    private String sku;
 
     private Long count;
 
     private Long amount;
 
-    private Long totalPrice;
+    private Long total;
 
     private AddressInfo address;
 
@@ -31,4 +33,18 @@ public class Order {
 
     private LocalDateTime updatedAt;
 
+    public Order(long transaction, Long goods, String sku, Long count, Long amount, Long total,
+                 AddressInfo address, LocalDateTime now) {
+        this.id = IdGenerator.nextIdentity();
+        this.transaction = transaction;
+        this.goods = goods;
+        this.sku = sku;
+        this.count = count;
+        this.amount = amount;
+        this.total = total;
+        this.address = address;
+        this.status = OrderStatus.CREATED;
+        this.createdAt = now;
+        this.updatedAt = now;
+    }
 }

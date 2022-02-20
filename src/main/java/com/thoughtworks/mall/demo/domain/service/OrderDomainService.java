@@ -17,11 +17,21 @@ public class OrderDomainService {
     private final OrderRepository orderRepository;
 
     public List<Order> findAllByOrderId(Long orderId) {
-        return orderRepository.findByOrderId(orderId);
+        List<Order> orders = orderRepository.findByTransaction(orderId);
+        log.info("orders size: {}", orders.size());
+        return orders;
     }
 
     public Order save(Order order) {
         return orderRepository.save(order);
+    }
+
+    public List<Order> findAll() {
+        return orderRepository.findAll();
+    }
+
+    public List<Order> saveAll(List<Order> orders) {
+        return orderRepository.saveAll(orders);
     }
 
     @Transactional

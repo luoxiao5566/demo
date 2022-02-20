@@ -1,8 +1,8 @@
 package com.thoughtworks.mall.demo.adapter.rest;
 
 import com.thoughtworks.mall.demo.application.command.GoodsCommand;
+import com.thoughtworks.mall.demo.application.response.GoodsInResponse;
 import com.thoughtworks.mall.demo.application.service.GoodsApplicationService;
-import com.thoughtworks.mall.demo.domain.model.Goods;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.List;
 
 @Api(tags = "Goods")
 @Slf4j
@@ -33,7 +32,7 @@ public class OpenApiGoodsController {
 
     @ApiOperation(value = "获取商品详情")
     @GetMapping("/goods")
-    public List<Goods> getGoods() {
+    public GoodsInResponse getGoods() {
         return applicationService.getGoods();
     }
 

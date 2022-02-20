@@ -20,21 +20,23 @@ import javax.persistence.Table;
 @Getter
 @Setter
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 @NoArgsConstructor
 @AllArgsConstructor
 @TypeDef(name = "jsonb", typeClass = JsonBinaryType.class)
 public class OrderPo extends AbstractEntity {
 
-    private Long orderId;
+    private Long transaction;
 
-    private String goodsSku;
+    private Long goods;
+
+    private String sku;
 
     private Long count;
 
     private Long amount;
 
-    private Long totalPrice;
+    private Long total;
 
     @Type(type = "jsonb")
     @Column(name = "address", columnDefinition = "jsonb")
