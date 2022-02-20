@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.5.9'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id "org.flywaydb.flyway" version "5.2.4"
 }
 
 group = 'com.thoughtworks.mall'
@@ -36,6 +37,8 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql:42.2.2'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+	implementation 'org.flywaydb:flyway-core'
 }
 
 test {
