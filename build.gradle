@@ -39,6 +39,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	implementation group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
 	implementation 'org.flywaydb:flyway-core'
+	implementation 'org.modelmapper:modelmapper:2.4.5'
 }
 
 test {
