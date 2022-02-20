@@ -3,6 +3,8 @@ package com.thoughtworks.mall.demo.domain.model;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.time.LocalDateTime;
+
 @Getter
 @NoArgsConstructor
 public class Goods {
@@ -19,4 +21,7 @@ public class Goods {
 
     private String comment;
 
+    private LocalDateTime createdAt;
+
+    private LocalDateTime updatedAt;
 }
